@@ -1,27 +1,24 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
+using Newtonsoft.Json;
 
 namespace Transmission.API.RPC.Common
 {
-	/// <summary>
-	/// Transmission request 
-	/// </summary>
-	public class TransmissionRequest : CommunicateBase
-	{
-		/// <summary>
-		/// Name of the method to invoke
-		/// </summary>
-		[JsonProperty("method")]
-		public string Method;
+    /// <summary>
+    /// Transmission request 
+    /// </summary>
+    public class TransmissionRequest : CommunicateBase
+    {
+        /// <summary>
+        /// Name of the method to invoke
+        /// </summary>
+        [JsonProperty("method")]
+        public string Method;
 
-		public TransmissionRequest(string method, Dictionary<string, object> arguments)
-		{
-			this.Method = method;
-			this.Arguments = arguments;
-		}
-	}
+        public TransmissionRequest(string method, Dictionary<string, object> arguments)
+        {
+            this.Method = method;
+            this.Arguments = arguments;
+        }
+    }
 }

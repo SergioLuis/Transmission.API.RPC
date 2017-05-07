@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Transmission.API.RPC.Common;
 using Transmission.API.RPC.Entity;
 
@@ -265,6 +261,5 @@ namespace Transmission.API.RPC.Arguments
         /// </summary>
         [JsonProperty("utp-enabled")]
         public bool? UtpEnabled { get; set; }
-
     }
 }

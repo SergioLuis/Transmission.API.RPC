@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Transmission.API.RPC.Common;
 
 namespace Transmission.API.RPC.Entity
@@ -17,43 +13,43 @@ namespace Transmission.API.RPC.Entity
         /// Pointer to a string of one or more cookies.
         /// </summary>
         [JsonProperty("cookies")]
-        public string Cookies{ get; set; }
+        public string Cookies { get; set; }
 
         /// <summary>
         /// Path to download the torrent to
         /// </summary>
         [JsonProperty("download-dir")]
-        public string DownloadDirectory{ get; set; }
+        public string DownloadDirectory { get; set; }
 
         /// <summary>
-		/// filename (relative to the server) or URL of the .torrent file (Priority than the metadata)
+        /// filename (relative to the server) or URL of the .torrent file (Priority than the metadata)
         /// </summary>
         [JsonProperty("filename")]
-        public string Filename{ get; set; }
+        public string Filename { get; set; }
 
         /// <summary>
         /// base64-encoded .torrent content
         /// </summary>
         [JsonProperty("metainfo")]
-        public string Metainfo{ get; set; }
+        public string Metainfo { get; set; }
 
         /// <summary>
         /// if true, don't start the torrent
         /// </summary>
         [JsonProperty("paused")]
-        public bool Paused{ get; set; }
+        public bool Paused { get; set; }
 
         /// <summary>
         /// maximum number of peers
         /// </summary>
         [JsonProperty("peer-limit")]
-        public int? PeerLimit{ get; set; }
+        public int? PeerLimit { get; set; }
 
         /// <summary>
         /// Torrent's bandwidth priority
         /// </summary>
         [JsonProperty("bandwidthPriority")]
-        public int? BandwidthPriority{ get; set; }
+        public int? BandwidthPriority { get; set; }
 
         /// <summary>
         /// Indices of file(s) to download
@@ -83,6 +79,6 @@ namespace Transmission.API.RPC.Entity
         /// Indices of normal-priority file(s)
         /// </summary>
         [JsonProperty("priority-normal")]
-        public int[] PriorityNormal{ get; set; }
+        public int[] PriorityNormal { get; set; }
     }
 }

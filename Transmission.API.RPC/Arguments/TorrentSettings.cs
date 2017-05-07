@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Transmission.API.RPC.Common;
 
 namespace Transmission.API.RPC.Arguments
@@ -32,6 +28,7 @@ namespace Transmission.API.RPC.Arguments
         /// Session upload limits are honored
         /// </summary>
         [JsonProperty("honorsSessionLimits")]
+
         public bool? HonorsSessionLimits { get; set; }
         /// <summary>
         /// Torrent id array
@@ -99,17 +96,17 @@ namespace Transmission.API.RPC.Arguments
         //"files-unwanted"      | array      indices of file(s) to not download
         //public [] FilesUnwanted;
 
-		/// <summary>
-		/// Strings of announce URLs to add
-		/// </summary>
-		[JsonProperty("trackerAdd")]
-		public string[] TrackerAdd { get; set; }
+        /// <summary>
+        /// Strings of announce URLs to add
+        /// </summary>
+        [JsonProperty("trackerAdd")]
+        public string[] TrackerAdd { get; set; }
 
-		/// <summary>
-		/// Ids of trackers to remove
-		/// </summary>
-		[JsonProperty("trackerRemove")]
-		public int[] TrackerRemove { get; set; }
+        /// <summary>
+        /// Ids of trackers to remove
+        /// </summary>
+        [JsonProperty("trackerRemove")]
+        public int[] TrackerRemove { get; set; }
 
         //"trackerReplace"      | array      pairs of <trackerId/new announce URLs>
         //public [] trackerReplace;

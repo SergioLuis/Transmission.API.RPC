@@ -1,61 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
+
 using Newtonsoft.Json;
-using Transmission.API.RPC.Entity;
 using Newtonsoft.Json.Linq;
-using Transmission.API.RPC.Common;
+
 using Transmission.API.RPC.Arguments;
+using Transmission.API.RPC.Common;
+using Transmission.API.RPC.Entity;
 
 namespace Transmission.API.RPC
 {
     public class Client
     {
-		public string Host
-		{
-			get;
-			private set;
-		}
-		public string SessionID
-		{
-			get;
-			private set;
-		}
-		public int CurrentTag
-		{
-			get;
-			private set;
-		}
-  
+        public string Host
+        {
+            get;
+            private set;
+        }
+        public string SessionID
+        {
+            get;
+            private set;
+        }
+        public int CurrentTag
+        {
+            get;
+            private set;
+        }
+
         private string _authorization;
         private bool _needAuthorization;
 
-		/// <summary>
-		/// Initialize client
-		/// </summary>
-		/// <param name="host">Host adresse</param>
-		/// <param name="sessionID">Session ID</param>
-		/// <param name="login">Login</param>
-		/// <param name="password">Password</param>
-		public Client(string host, string sessionID = null, string login = null, string password = null)
+        /// <summary>
+        /// Initialize client
+        /// </summary>
+        /// <param name="host">Host adresse</param>
+        /// <param name="sessionID">Session ID</param>
+        /// <param name="login">Login</param>
+        /// <param name="password">Password</param>
+        public Client(string host, string sessionID = null, string login = null, string password = null)
         {
             this.Host = host;
             this.SessionID = sessionID;
 
-			if (!String.IsNullOrWhiteSpace(login))
-			{
-				var authBytes = Encoding.UTF8.GetBytes(login + ":" + password);
-				var encoded = Convert.ToBase64String(authBytes);
+            if (!String.IsNullOrWhiteSpace(login))
+            {
+                var authBytes = Encoding.UTF8.GetBytes(login + ":" + password);
+                var encoded = Convert.ToBase64String(authBytes);
 
-				this._authorization = "Basic " + encoded;
-				this._needAuthorization = true;
-			}
+                this._authorization = "Basic " + encoded;
+                this._needAuthorization = true;
+            }
         }
 
         #region Session methods
@@ -121,7 +120,7 @@ namespace Transmission.API.RPC
             var result = response.Deserialize<Statistic>();
             return result;
         }
-        
+
         /// <summary>
         /// Get information of current session (API: session-get)
         /// </summary>
@@ -558,9 +557,9 @@ namespace Transmission.API.RPC
             var request = new TransmissionRequest("torrent-rename-path", arguments);
             var response = SendRequest(request);
 
-			var result = response.Deserialize<RenameTorrentInfo>();
+            var result = response.Deserialize<RenameTorrentInfo>();
 
-			return result;
+            return result;
         }
 
         /// <summary>
@@ -711,7 +710,7 @@ namespace Transmission.API.RPC
                 webRequest.ContentType = "application/json-rpc";
                 webRequest.Headers["X-Transmission-Session-Id"] = SessionID;
                 webRequest.Method = "POST";
-                
+
                 if (_needAuthorization)
                     webRequest.Headers["Authorization"] = _authorization;
 
@@ -724,7 +723,7 @@ namespace Transmission.API.RPC
 
                 var responseTask = webRequest.GetResponseAsync();
                 responseTask.WaitAndUnwrapException();
-                
+
                 //Send request and prepare response
                 using (var webResponse = responseTask.Result)
                 {
