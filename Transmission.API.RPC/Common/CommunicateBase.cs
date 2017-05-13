@@ -10,13 +10,13 @@ namespace Transmission.API.RPC.Common
         /// Data
         /// </summary>
         [JsonProperty("arguments")]
-        public Dictionary<string, object> Arguments;
+        public Dictionary<string, object> Arguments { get; set; }
 
         /// <summary>
         /// Number (id)
         /// </summary>
         [JsonProperty("tag")]
-        public int Tag;
+        public int Tag { get; set; }
 
         /// <summary>
         /// Convert to JSON string

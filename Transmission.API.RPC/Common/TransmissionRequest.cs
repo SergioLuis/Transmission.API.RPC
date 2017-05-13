@@ -2,6 +2,8 @@
 
 using Newtonsoft.Json;
 
+using Transmission.API.RPC.ExtensionMethods;
+
 namespace Transmission.API.RPC.Common
 {
     /// <summary>
@@ -13,12 +15,29 @@ namespace Transmission.API.RPC.Common
         /// Name of the method to invoke
         /// </summary>
         [JsonProperty("method")]
-        public string Method;
+        public string Method { get; set; }
 
-        public TransmissionRequest(string method, Dictionary<string, object> arguments)
+        public TransmissionRequest(string method)
         {
-            this.Method = method;
-            this.Arguments = arguments;
+            Method = method;
+        }
+
+        public void AddArgument(string key, object value)
+        {
+            if (Arguments == null)
+                Arguments = new Dictionary<string, object>();
+
+            Arguments.Add(key, value);
+        }
+
+        public void AddArguments(ArgumentsBase arguments)
+        {
+            Dictionary<string, object> args = arguments.ToDictionary();
+
+            if (Arguments == null)
+                Arguments = new Dictionary<string, object>();
+
+            Arguments.AddRange(args);
         }
     }
 }

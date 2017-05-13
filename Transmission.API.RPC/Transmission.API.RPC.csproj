@@ -4,6 +4,10 @@
     <TargetFrameworks>netstandard1.4</TargetFrameworks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.4|AnyCPU'">
+    <NoWarn />
+  </PropertyGroup>
+
   <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard1.4' ">
     <Reference Include="System.Collections.Concurrent" />
     <Reference Include="System" />
